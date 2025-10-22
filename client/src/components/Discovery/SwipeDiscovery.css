@@ -1,0 +1,636 @@
+.swipe-discovery {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.swipe-header {
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 8px 0;
+    flex-shrink: 0;
+}
+
+.swipe-header h2 {
+    margin: 0 0 6px 0;
+    color: #333;
+    font-size: 22px;
+}
+
+.match-count {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.swipe-discovery .card-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.swipe-discovery .friend-card {
+    width: 100% !important;
+    max-width: 700px !important;
+    min-width: 500px !important;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    height: calc(100vh - 200px);
+    max-height: 850px;
+    min-height: 650px;
+    display: block;
+    padding: 0 !important;
+    border: none !important;
+    scroll-behavior: smooth;
+}
+
+.swipe-discovery .friend-card.animating {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+.swipe-discovery .card-image {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    flex-shrink: 0;
+    background-color: #f0f0f0;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Tinder-style overlay gradient for text readability */
+.swipe-discovery .card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* User info overlay on image - Tinder style */
+.card-image-info {
+    position: absolute;
+    bottom: 80px;
+    left: 24px;
+    right: 24px;
+    color: white;
+    z-index: 2;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.card-image-info h3 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: white;
+    line-height: 1.1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.card-image-info .match-reason {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.3;
+    margin: 0;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Override Dashboard.css styling with high specificity */
+.swipe-discovery .card-image-info .match-reason {
+    color: white !important;
+    text-align: left !important;
+}
+
+.match-score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #667eea;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+/* See Bio button - needs high specificity to override Dashboard styles */
+.swipe-discovery .friend-card .see-bio-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px);
+    color: white !important;
+    padding: 10px 24px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+    z-index: 10;
+    letter-spacing: 0.5px;
+    width: auto !important;
+    margin-top: 0 !important;
+}
+
+.swipe-discovery .friend-card .see-bio-btn:hover {
+    transform: translateX(-50%) scale(1.05) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.swipe-discovery .friend-card .see-bio-btn:active {
+    transform: translateX(-50%) scale(0.98) !important;
+}
+
+.swipe-discovery .card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: white;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+.card-content.expanded {
+    max-height: none;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.card-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 28px;
+    color: #333;
+    font-weight: 700;
+}
+
+.location {
+    color: #666;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bio {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.bio strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bio p {
+    margin: 0;
+    max-height: 3.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.bio.expanded p {
+    max-height: none;
+    -webkit-line-clamp: unset;
+}
+
+.interests {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.interests strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.interest-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.match-factors {
+    background: #f8f9ff;
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    flex-shrink: 0;
+}
+
+.match-factors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.match-factors-header h4 {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    font-weight: 700;
+}
+
+.expand-icon {
+    color: #667eea;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.match-factors-summary {
+    margin-top: 12px;
+}
+
+.reason-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.reason-summary:last-of-type {
+    border-bottom: none;
+}
+
+.reason-icon {
+    font-size: 20px;
+}
+
+.reason-title {
+    font-size: 13px;
+    color: #555;
+    font-weight: 600;
+}
+
+.show-more-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background: white;
+    border: 2px solid #667eea;
+    color: #667eea;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.match-factors-detailed {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reason-card {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 3px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.reason-card.strength-high {
+    border-left-color: #4ecdc4;
+}
+
+.reason-card.strength-medium {
+    border-left-color: #667eea;
+}
+
+.reason-card.strength-low {
+    border-left-color: #a8b2d1;
+}
+
+.reason-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.reason-header .reason-icon {
+    font-size: 18px;
+}
+
+.reason-header .reason-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+
+.reason-detail {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+    padding-left: 26px;
+}
+
+.swipe-actions {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 8px;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.swipe-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.swipe-btn:hover {
+    transform: scale(1.15) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.swipe-btn:active {
+    transform: scale(1.05);
+}
+
+.swipe-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.swipe-btn.pass {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: white;
+}
+
+.swipe-btn.like {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+}
+
+.btn-icon {
+    font-size: 28px;
+    margin-bottom: 2px;
+}
+
+.swipe-instructions {
+    text-align: center;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 12px;
+    margin-top: auto;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+}
+
+.swipe-instructions p {
+    margin: 0;
+    font-size: 11px;
+    color: #666;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.no-more-cards {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.no-more-cards h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.no-more-cards p {
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .swipe-discovery {
+        padding: 5px 10px;
+    }
+    
+    .swipe-header h2 {
+        font-size: 20px;
+    }
+    
+    .swipe-discovery .card-container {
+        padding: 10px;
+    }
+    
+    .swipe-discovery .friend-card {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: calc(100vh - 200px);
+        min-height: 600px;
+    }
+    
+    .swipe-discovery .card-image {
+        height: 450px;
+    }
+    
+    .card-image-info {
+        bottom: 70px;
+        left: 20px;
+    }
+    
+    .card-image-info h3 {
+        font-size: 36px;
+        letter-spacing: -0.3px;
+    }
+    
+    .card-image-info .match-reason {
+        font-size: 15px;
+    }
+    
+    .see-bio-btn {
+        font-size: 13px;
+        padding: 8px 20px;
+    }
+    
+    .swipe-discovery .card-content {
+        padding: 20px;
+        gap: 16px;
+    }
+    
+    .card-header h3 {
+        font-size: 24px;
+    }
+    
+    .swipe-actions {
+        gap: 40px;
+        padding: 0 15px;
+    }
+    
+    .swipe-btn {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .btn-icon {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .swipe-discovery {
+        padding: 5px;
+    }
+    
+    .swipe-discovery .card-container {
+        padding: 5px;
+    }
+    
+    .swipe-discovery .friend-card {
+        min-height: 550px;
+        height: calc(100vh - 180px);
+    }
+    
+    .swipe-discovery .card-image {
+        height: 350px;
+    }
+    
+    .swipe-discovery .card-content {
+        padding: 16px;
+        gap: 14px;
+    }
+    
+    .see-bio-btn {
+        padding: 10px 24px;
+        font-size: 13px;
+    }
+    
+    .swipe-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+    }
+    
+    .btn-icon {
+        font-size: 24px;
+    }
+}

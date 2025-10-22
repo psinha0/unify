@@ -1,0 +1,323 @@
+/* Add to your profile.css file */
+
+/* Profile prompts styling */
+.profile-prompt-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 350px;
+    animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.profile-prompt-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border-left: 4px solid #5d7ce5;
+}
+
+.profile-prompt-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.prompt-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.prompt-option {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 15px;
+    text-align: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.prompt-option:hover {
+    background-color: #f0f5ff;
+    border-color: #5d7ce5;
+}
+
+.prompt-option.selected {
+    background-color: #e6eeff;
+    border-color: #5d7ce5;
+    font-weight: 500;
+}
+
+.prompt-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.prompt-submit, .prompt-skip {
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.prompt-submit {
+    background-color: #5d7ce5;
+    color: white;
+}
+
+.prompt-submit:hover {
+    background-color: #4a69d2;
+}
+
+.prompt-submit:disabled {
+    background-color: #b0bce4;
+    cursor: not-allowed;
+}
+
+.prompt-skip {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.prompt-skip:hover {
+    background-color: #e0e0e0;
+}
+
+.prompt-note {
+    font-size: 12px;
+    color: #888;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.prompt-success {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.prompt-success h3 {
+    color: #4caf50;
+    margin-bottom: 8px;
+}
+
+/* Friend card enhanced styling */
+.friend-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.friend-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.friend-card-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.match-details-button, .match-insights-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.match-details-button:hover, .match-insights-button:hover {
+    background-color: #eef2ff;
+    border-color: #5d7ce5;
+    color: #5d7ce5;
+}
+
+.match-details-button.active, .match-insights-button.active {
+    background-color: #5d7ce5;
+    color: white;
+    border-color: #5d7ce5;
+}
+
+.button-icon {
+    font-size: 16px;
+}
+
+.match-details, .match-insights {
+    background-color: #f8faff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 3px solid #5d7ce5;
+}
+
+.match-factor, .insight-item {
+    margin-bottom: 12px;
+}
+
+.match-factor h4, .insight-item h4, .insight-item h5 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 15px;
+}
+
+.factor-icon, .insight-icon {
+    color: #5d7ce5;
+}
+
+.shared-items, .topic-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.shared-item, .suggested-topic {
+    background-color: #eef2ff;
+    color: #5d7ce5;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.insight-content {
+    margin-left: 26px;
+}
+
+.insight-note {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.learning-info {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px dashed #ddd;
+}
+
+.learning-progress {
+    height: 4px;
+    background-color: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #5d7ce5;
+}
+
+.learning-note {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+/* Match filter form styling */
+.match-filter-form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.match-filter-form h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.filter-apply-button, .filter-reset-button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-right: 10px;
+}
+
+.filter-apply-button {
+    background-color: #5d7ce5;
+    color: white;
+}
+
+.filter-apply-button:hover {
+    background-color: #4a69d2;
+}
+
+.filter-reset-button {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.filter-reset-button:hover {
+    background-color: #e0e0e0;
+}
